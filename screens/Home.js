@@ -8,6 +8,7 @@ import {
   ScrollView,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
+
 import {
   getSeasonSpringAnime,
   getSeasonSummerAnime,
@@ -20,6 +21,7 @@ import MovieCarousel from '../components/MovieCarousel';
 const dimension = Dimensions.get('screen');
 const Home = ({navigation}) => {
   const [sliderImages, setSliderImages] = useState([]);
+  const [upcomingAnime, setUpcomingAnime] = useState([]);
   const [topAnime, setTopAnime] = useState([]);
   const [summerAnime, setSummerAnime] = useState([]);
   const [springAnime, setSpringAnime] = useState([]);
@@ -39,6 +41,7 @@ const Home = ({navigation}) => {
         response5.forEach(res => {
           animeImages.push(`${res.images.webp.large_image_url}`);
         });
+        setUpcomingAnime(response5);
         setSliderImages(animeImages);
         setWinterAnime(response4);
         setSpringAnime(response3);
@@ -62,6 +65,9 @@ const Home = ({navigation}) => {
               autoplay={true}
               circleLoop={true}
               dotStyle={styles.sliderStyle}
+              onCurrentImagePressed={index =>
+                navigation.navigate('Anime Details', {...upcomingAnime[index]})
+              }
             />
           </View>
           <View style={styles.carousel}>

@@ -11,6 +11,7 @@ import {
 import React, {useState} from 'react';
 import PlayButton from '../components/PlayButton';
 import StarRating from 'react-native-star-rating';
+import YouTube from 'react-native-youtube';
 // import VideoPlayer from 'react-native-video-controls';
 const dimensions = Dimensions.get('screen').height;
 
@@ -87,18 +88,17 @@ const Anime = ({route}) => {
               </Text>
             )}
           </View>
+          <Text style={styles.movieTitle}>Youtube Trailer</Text>
+          <YouTube
+            apiKey="AIzaSyB9a-UW9UZpyBqKl29Lmme-wbwvnFNpjU0"
+            videoId={trailer.youtube_id} // The YouTube video ID
+            play={false}
+            fullscreen={false} // control whether the video should play in fullscreen or inline
+            // onReady={e => this.setState({ isReady: true }ss
+            style={{alignSelf: 'stretch', height: 300}}
+          />
         </View>
       </ScrollView>
-      <Modal
-        style={styles.modal}
-        supportedOrientations={['portrait', 'landscape']}
-        animationType="slide"
-        visible={modalVisible}>
-        {/* <VideoPlayer
-            source={{uri: 'https://vjs.zencdn.net/v/oceans.mp4'}}
-            onPress={() => setModalVisible(!modalVisible)}
-          /> */}
-      </Modal>
     </View>
   );
 };
