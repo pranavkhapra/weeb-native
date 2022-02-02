@@ -45,9 +45,9 @@ const Anime = ({route}) => {
           style={styles.image}
         />
         <View style={styles.container}>
-          <View style={styles.playButtonContainer}>
+          {/* <View style={styles.playButtonContainer}>
             <PlayButton handlePress={() => setModalVisible(true)} />
-          </View>
+          </View> */}
           <Text style={styles.movieTitle}>{title}</Text>
           <View style={styles.genreContainer}>
             {genres.map((genre, index) => (
@@ -89,14 +89,16 @@ const Anime = ({route}) => {
             )}
           </View>
           <Text style={styles.movieTitle}>Youtube Trailer</Text>
-          <YouTube
-            apiKey="AIzaSyB9a-UW9UZpyBqKl29Lmme-wbwvnFNpjU0"
-            videoId={trailer.youtube_id} // The YouTube video ID
-            play={false}
-            fullscreen={false} // control whether the video should play in fullscreen or inline
-            // onReady={e => this.setState({ isReady: true }ss
-            style={{alignSelf: 'stretch', height: 300}}
-          />
+          <View style={{width: '100%', padding: 4}}>
+            <YouTube
+              apiKey="AIzaSyB9a-UW9UZpyBqKl29Lmme-wbwvnFNpjU0"
+              videoId={trailer.youtube_id} // The YouTube video ID
+              play={false}
+              fullscreen={false} // control whether the video should play in fullscreen or inline
+              // onReady={e => this.setState({ isReady: true }ss
+              style={{alignSelf: 'stretch', height: 300}}
+            />
+          </View>
         </View>
       </ScrollView>
     </View>

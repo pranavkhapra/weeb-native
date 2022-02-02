@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   FlatList,
   Dimensions,
+  ScrollView,
 } from 'react-native';
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -38,6 +39,7 @@ const SearchBox = () => {
             value={text}
             placeholder={'Search Anime Shows or Movies'}
             placeholderTextColor={'white'}
+            onSubmitEditing={handleSearch}
           />
         </View>
         <TouchableOpacity onPress={handleSearch}>

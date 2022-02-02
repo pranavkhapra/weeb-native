@@ -26,12 +26,14 @@ const Home = ({navigation}) => {
   const [summerAnime, setSummerAnime] = useState([]);
   const [springAnime, setSpringAnime] = useState([]);
   const [WinterAnime, setWinterAnime] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
+  //slider Loading
   useEffect(() => {
     const fetchSeasonUpcomingAnime = async () => {
       try {
+        setLoading(true);
         const response = await getSeasonUpcomingAnime();
         const animeImages = [];
         response.forEach(res => {
@@ -39,6 +41,7 @@ const Home = ({navigation}) => {
         });
         setUpcomingAnime(response);
         setSliderImages(animeImages);
+        setLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -96,7 +99,7 @@ const Home = ({navigation}) => {
 
   return (
     <>
-      {!loading ? (
+      {!loading && (
         <ScrollView style={styles.container}>
           <View style={styles.sliderContainer}>
             <SliderBox
@@ -104,10 +107,12 @@ const Home = ({navigation}) => {
               sliderBoxHeight={dimension.height / 2}
               autoplay={true}
               circleLoop={true}
+              resizeMode={'cover'}
               dotStyle={styles.sliderStyle}
               onCurrentImagePressed={index =>
                 navigation.navigate('Anime Details', {...upcomingAnime[index]})
               }
+              imageLoadingColor={'#f58f84'}
             />
           </View>
           <View style={styles.carousel}>
@@ -139,9 +144,17 @@ const Home = ({navigation}) => {
             />
           </View>
         </ScrollView>
-      ) : (
-        <View style={styles.loading}>
-          <ActivityIndicator size="large" style={styles.loading} />
+      )}
+
+      {loading && (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: '#044f67',
+          }}>
+          <ActivityIndicator size={'large'} color={'#f58f84'} />
         </View>
       )}
     </>
@@ -165,12 +178,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignContent: 'center',
-  },
-  loading: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: '1',
   },
 });
 export default Home;
