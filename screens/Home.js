@@ -27,7 +27,7 @@ const Home = ({navigation}) => {
   const [summerAnime, setSummerAnime] = useState([]);
   const [springAnime, setSpringAnime] = useState([]);
   const [WinterAnime, setWinterAnime] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   //slider Loading
@@ -50,23 +50,13 @@ const Home = ({navigation}) => {
         setSummerAnime(response2);
         setSpringAnime(response3);
         setWinterAnime(response4);
-        setLoading(false);
       } catch (error) {
         console.error(error);
       }
+      setLoading(false);
     };
     fetchApiCalls();
   }, []);
-
-  useEffect(() => {
-    const fetchSpringAnime = async () => {
-      try {
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchSpringAnime();
-  }, [springAnime]);
 
   return (
     <>
