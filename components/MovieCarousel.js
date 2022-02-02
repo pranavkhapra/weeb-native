@@ -1,4 +1,11 @@
-import {View, Text, FlatList, StyleSheet, Button} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Button,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 import MovieCard from './MovieCard';
 
@@ -8,7 +15,7 @@ const MovieCarousel = ({title, items, navigation}) => {
       <View style={styles.titleContainer}>
         <Text style={styles.titleText}>{title} 💜</Text>
       </View>
-      <View>
+      <ScrollView>
         <FlatList
           horizontal={true}
           data={items}
@@ -16,7 +23,7 @@ const MovieCarousel = ({title, items, navigation}) => {
             <MovieCard {...item} navigation={navigation} />
           )}
         />
-      </View>
+      </ScrollView>
     </>
   );
 };
