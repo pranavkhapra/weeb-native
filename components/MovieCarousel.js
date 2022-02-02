@@ -8,12 +8,13 @@ import {
 } from 'react-native';
 import React from 'react';
 import MovieCard from './MovieCard';
+import {colors} from '../themes/Color';
 
 const MovieCarousel = ({title, items, navigation}) => {
   return (
     <>
       <View style={styles.titleContainer}>
-        <Text style={styles.titleText}>{title} 💜</Text>
+        <Text style={styles.titleText}>{title}</Text>
       </View>
       <ScrollView>
         <FlatList
@@ -33,10 +34,10 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   titleText: {
-    fontSize: 20,
+    fontSize: 24,
     paddingBottom: 10,
-    color: '#f58f84',
-    fontFamily: 'Pacifico-Regular',
+    color: colors.headingColor,
+    fontFamily: colors.fontFamilyForHeading,
   },
 });
 export default MovieCarousel;

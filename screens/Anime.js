@@ -12,6 +12,7 @@ import React, {useState} from 'react';
 import PlayButton from '../components/PlayButton';
 import StarRating from 'react-native-star-rating';
 import YouTube from 'react-native-youtube';
+import {colors} from '../themes/Color';
 // import VideoPlayer from 'react-native-video-controls';
 const dimensions = Dimensions.get('screen').height;
 
@@ -33,7 +34,7 @@ const Anime = ({route}) => {
   const [numberOfLines, setNumberofLines] = useState(2);
   const [modalVisible, setModalVisible] = useState(false);
   return (
-    <View style={{backgroundColor: '#044f67', flex: 1}}>
+    <View style={{backgroundColor: colors.backgroundColor, flex: 1}}>
       <ScrollView>
         <Image
           source={
@@ -114,11 +115,11 @@ const styles = StyleSheet.create({
     height: dimensions / 2,
   },
   movieTitle: {
-    fontSize: 32,
+    fontSize: 26,
     padding: 10,
     marginTop: 10,
-    color: '#f58f84',
-    fontFamily: 'CuteFont-Regular',
+    color: colors.headingColor,
+    fontFamily: colors.fontFamilyForHeading,
   },
   genreContainer: {
     display: 'flex',
@@ -127,36 +128,36 @@ const styles = StyleSheet.create({
   },
   genreText: {
     marginRight: 5,
-    fontSize: 22,
+    fontSize: 14,
     color: 'white',
-    fontFamily: 'CuteFont-Regular',
+    fontFamily: colors.fontFamilyForText,
   },
   text: {
     marginTop: 3,
-    fontSize: 18,
+    fontSize: 14,
     color: 'white',
-    fontFamily: 'CuteFont-Regular',
+    fontFamily: colors.fontFamilyForText,
   },
   synopsis: {
     marginTop: 3,
-    fontSize: 22,
+    fontSize: 14,
     color: 'white',
-    fontFamily: 'CuteFont-Regular',
+    fontFamily: colors.fontFamilyForText,
   },
   extraText: {
     marginBottom: 10,
-    fontSize: 18,
-    color: '#f58f84',
-    fontFamily: 'CuteFont-Regular',
+    fontSize: 14,
+    color: colors.headingColor,
+    fontFamily: colors.fontFamilyForText,
   },
   extraTextContainer: {
     display: 'flex',
     justifyContent: 'center',
     alignContent: 'flex-start',
     margin: 10,
-    fontSize: 22,
+    fontSize: 14,
     color: 'white',
-    fontFamily: 'CuteFont-Regular',
+    fontFamily: colors.fontFamilyForText,
   },
   playButtonContainer: {
     position: 'absolute',
