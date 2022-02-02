@@ -27,40 +27,51 @@ const Home = ({navigation}) => {
   const [summerAnime, setSummerAnime] = useState([]);
   const [springAnime, setSpringAnime] = useState([]);
   const [WinterAnime, setWinterAnime] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  //slider Loading
-  useEffect(() => {
-    const fetchApiCalls = async () => {
-      try {
-        setLoading(true);
-        const response = await getSeasonUpcomingAnime();
-        const response1 = await getTopAnime();
-        const response2 = await getSeasonSummerAnime();
-        const response3 = await getSeasonSpringAnime();
-        const response4 = await getSeasonsWinterAnime();
-        const animeImages = [];
-        response.forEach(res => {
-          animeImages.push(`${res.images.webp.large_image_url}`);
-        });
-        setUpcomingAnime(response);
-        setSliderImages(animeImages);
-        setTopAnime(response1);
-        setSummerAnime(response2);
-        setSpringAnime(response3);
-        setWinterAnime(response4);
-      } catch (error) {
-        console.error(error);
-      }
-      setLoading(false);
-    };
-    fetchApiCalls();
-  }, []);
+  const getData = () => {
+    return Promise.all([
+      getSeasonUpcomingAnime(),
+      getTopAnime(),
+      getSeasonSummerAnime(),
+      getSeasonSpringAnime(),
+      getSeasonsWinterAnime(),
+    ]);
+  };
 
+  useEffect(() => {
+    getData()
+      .then(
+        ([
+          upcominganime,
+          topanime,
+          seasonsummeranime,
+          seasonspringanime,
+          seasonwinteranime,
+        ]) => {
+          const animeImages = [];
+          upcominganime.forEach(res => {
+            animeImages.push(`${res.images.webp.large_image_url}`);
+          });
+          setUpcomingAnime(upcominganime);
+          setSliderImages(animeImages);
+          setTopAnime(topanime);
+          setSummerAnime(seasonsummeranime);
+          setSpringAnime(seasonspringanime);
+          setWinterAnime(seasonwinteranime);
+        },
+      )
+      .catch(() => {
+        setError(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
   return (
     <>
-      {!loading && (
+      {!loading ? (
         <ScrollView style={styles.container}>
           <View style={styles.sliderContainer}>
             <SliderBox
@@ -105,9 +116,7 @@ const Home = ({navigation}) => {
             />
           </View>
         </ScrollView>
-      )}
-
-      {loading && (
+      ) : (
         <View
           style={{
             flex: 1,
