@@ -6,6 +6,7 @@ import Anime from './screens/Anime';
 import NavHeader from './components/NavHeader';
 import SearchBox from './screens/SearchBox';
 import SplashScreen from 'react-native-splash-screen';
+import Toast from 'react-native-toast-message';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,38 +15,41 @@ const App = () => {
     SplashScreen.hide();
   }, []);
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{
-            headerTransparent: true,
-            headerTitle: () => <NavHeader home={true} />,
-          }}
-        />
-        <Stack.Screen
-          name="Anime Details"
-          component={Anime}
-          options={{
-            headerTransparent: true,
-            headerBackTitleVisible: false,
-            headerBackVisible: false,
-            headerTitle: () => <NavHeader home={false} />,
-          }}
-        />
-        <Stack.Screen
-          name="Search"
-          component={SearchBox}
-          options={{
-            headerTransparent: true,
-            headerBackTitleVisible: false,
-            headerBackVisible: false,
-            headerTitle: () => <NavHeader home={false} />,
-          }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{
+              headerTransparent: true,
+              headerTitle: () => <NavHeader home={true} />,
+            }}
+          />
+          <Stack.Screen
+            name="Anime Details"
+            component={Anime}
+            options={{
+              headerTransparent: true,
+              headerBackTitleVisible: false,
+              headerBackVisible: false,
+              headerTitle: () => <NavHeader home={false} />,
+            }}
+          />
+          <Stack.Screen
+            name="Search"
+            component={SearchBox}
+            options={{
+              headerTransparent: true,
+              headerBackTitleVisible: false,
+              headerBackVisible: false,
+              headerTitle: () => <NavHeader home={false} />,
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+      <Toast />
+    </>
   );
 };
 

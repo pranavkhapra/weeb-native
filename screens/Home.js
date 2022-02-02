@@ -19,6 +19,9 @@ import {
 import {SliderBox} from 'react-native-image-slider-box';
 import MovieCarousel from '../components/MovieCarousel';
 import {colors} from '../themes/Color';
+import Toast from 'react-native-toast-message';
+import RNRestart from 'react-native-restart';
+
 const dimension = Dimensions.get('screen');
 const Home = ({navigation}) => {
   const [sliderImages, setSliderImages] = useState([]);
@@ -28,7 +31,7 @@ const Home = ({navigation}) => {
   const [springAnime, setSpringAnime] = useState([]);
   const [WinterAnime, setWinterAnime] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
 
   const getData = () => {
     return Promise.all([
@@ -62,13 +65,26 @@ const Home = ({navigation}) => {
           setWinterAnime(seasonwinteranime);
         },
       )
-      .catch(() => {
-        setError(true);
+      .catch(error => {
+        console.error(error.message);
+        const showToast = errorText => {
+          Toast.show({
+            type: 'error',
+            text1: `${errorText}`,
+            text2:
+              'Beep Boop, Error Found Put On the Seat Belt Time for Refresh',
+          });
+        };
+        showToast(error.message);
+        setTimeout(() => {
+          RNRestart.Restart();
+        }, 4000);
       })
       .finally(() => {
         setLoading(false);
       });
   }, []);
+
   return (
     <>
       {!loading ? (
