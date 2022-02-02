@@ -30,28 +30,68 @@ const Home = ({navigation}) => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const fetchAnimeDetails = async () => {
+    const fetchSeasonUpcomingAnime = async () => {
       try {
-        const response1 = await getTopAnime();
-        const response2 = await getSeasonSummerAnime();
-        const response3 = await getSeasonSpringAnime();
-        const response4 = await getSeasonsWinterAnime();
-        const response5 = await getSeasonUpcomingAnime();
+        const response = await getSeasonUpcomingAnime();
         const animeImages = [];
-        response5.forEach(res => {
+        response.forEach(res => {
           animeImages.push(`${res.images.webp.large_image_url}`);
         });
-        setUpcomingAnime(response5);
+        setUpcomingAnime(response);
         setSliderImages(animeImages);
-        setWinterAnime(response4);
-        setSpringAnime(response3);
-        setSummerAnime(response2);
-        setTopAnime(response1);
       } catch (error) {
         console.error(error);
       }
     };
-    fetchAnimeDetails();
+    fetchSeasonUpcomingAnime();
+  }, []);
+
+  useEffect(() => {
+    const fetchTopAnime = async () => {
+      try {
+        const response = await getTopAnime();
+        setTopAnime(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchTopAnime();
+  }, []);
+
+  useEffect(() => {
+    const fetchSeasonSummerAnime = async () => {
+      try {
+        const response = await getSeasonSummerAnime();
+        setSummerAnime(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchSeasonSummerAnime();
+  }, []);
+
+  useEffect(() => {
+    const fetchSpringAnime = async () => {
+      try {
+        const response = await getSeasonSpringAnime();
+        setSpringAnime(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchSpringAnime();
+  }, []);
+
+  useEffect(() => {
+    const fetchWinterAnime = async () => {
+      try {
+        const response = await getSeasonsWinterAnime();
+        setWinterAnime(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchWinterAnime();
   }, []);
 
   return (
