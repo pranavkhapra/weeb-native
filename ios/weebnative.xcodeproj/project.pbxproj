@@ -31,6 +31,8 @@
 		130BD54B24294C88B67F9A3B /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45C7DBB605064D2F86078F83 /* Octicons.ttf */; };
 		CFB5D19880D94F379A55D67C /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7611558CEEB741CD9B6A9303 /* SimpleLineIcons.ttf */; };
 		623396FFFDEC4C05A2E003D6 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07D2E8D060614738BD00BEF4 /* Zocial.ttf */; };
+		EBB692C3806346378F038F82 /* Rowdies-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B55D59B520A0478BAC2DC4FE /* Rowdies-Regular.ttf */; };
+		40B96A0D5D4B4708A6A1AB72 /* AnnieUseYourTelescope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AD0136771D4472E8C7739DD /* AnnieUseYourTelescope-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		45C7DBB605064D2F86078F83 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		7611558CEEB741CD9B6A9303 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		07D2E8D060614738BD00BEF4 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B55D59B520A0478BAC2DC4FE /* Rowdies-Regular.ttf */ = {isa = PBXFileReference; name = "Rowdies-Regular.ttf"; path = "../assets/fonts/Rowdies-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4AD0136771D4472E8C7739DD /* AnnieUseYourTelescope-Regular.ttf */ = {isa = PBXFileReference; name = "AnnieUseYourTelescope-Regular.ttf"; path = "../assets/fonts/AnnieUseYourTelescope-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +189,8 @@
 				45C7DBB605064D2F86078F83 /* Octicons.ttf */,
 				7611558CEEB741CD9B6A9303 /* SimpleLineIcons.ttf */,
 				07D2E8D060614738BD00BEF4 /* Zocial.ttf */,
+				B55D59B520A0478BAC2DC4FE /* Rowdies-Regular.ttf */,
+				4AD0136771D4472E8C7739DD /* AnnieUseYourTelescope-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -299,6 +305,8 @@
 				130BD54B24294C88B67F9A3B /* Octicons.ttf in Resources */,
 				CFB5D19880D94F379A55D67C /* SimpleLineIcons.ttf in Resources */,
 				623396FFFDEC4C05A2E003D6 /* Zocial.ttf in Resources */,
+				EBB692C3806346378F038F82 /* Rowdies-Regular.ttf in Resources */,
+				40B96A0D5D4B4708A6A1AB72 /* AnnieUseYourTelescope-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

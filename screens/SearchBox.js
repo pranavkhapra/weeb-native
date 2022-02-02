@@ -14,6 +14,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {searchAnimeByName} from '../api/axios';
 import MovieCard from '../components/MovieCard';
 import {useNavigation} from '@react-navigation/native';
+import {colors} from '../themes/Color';
 const dimensions = Dimensions.get('screen').width;
 
 const SearchBox = () => {
@@ -30,7 +31,7 @@ const SearchBox = () => {
     }
   };
   return (
-    <SafeAreaView style={{backgroundColor: '#5d3f6a', flex: 1}}>
+    <SafeAreaView style={{backgroundColor: colors.backgroundColor, flex: 1}}>
       <View style={styles.container}>
         <View style={styles.searchContainer}>
           <TextInput

@@ -18,6 +18,7 @@ import {
 } from '../api/axios';
 import {SliderBox} from 'react-native-image-slider-box';
 import MovieCarousel from '../components/MovieCarousel';
+import {colors} from '../themes/Color';
 const dimension = Dimensions.get('screen');
 const Home = ({navigation}) => {
   const [sliderImages, setSliderImages] = useState([]);
@@ -31,71 +32,41 @@ const Home = ({navigation}) => {
 
   //slider Loading
   useEffect(() => {
-    const fetchSeasonUpcomingAnime = async () => {
+    const fetchApiCalls = async () => {
       try {
         setLoading(true);
         const response = await getSeasonUpcomingAnime();
+        const response1 = await getTopAnime();
+        const response2 = await getSeasonSummerAnime();
+        const response3 = await getSeasonSpringAnime();
+        const response4 = await getSeasonsWinterAnime();
         const animeImages = [];
         response.forEach(res => {
           animeImages.push(`${res.images.webp.large_image_url}`);
         });
         setUpcomingAnime(response);
         setSliderImages(animeImages);
+        setTopAnime(response1);
+        setSummerAnime(response2);
+        setSpringAnime(response3);
+        setWinterAnime(response4);
         setLoading(false);
       } catch (error) {
         console.error(error);
       }
     };
-    fetchSeasonUpcomingAnime();
-  }, []);
-
-  useEffect(() => {
-    const fetchTopAnime = async () => {
-      try {
-        const response = await getTopAnime();
-        setTopAnime(response);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchTopAnime();
-  }, []);
-
-  useEffect(() => {
-    const fetchSeasonSummerAnime = async () => {
-      try {
-        const response = await getSeasonSummerAnime();
-        setSummerAnime(response);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchSeasonSummerAnime();
+    fetchApiCalls();
   }, []);
 
   useEffect(() => {
     const fetchSpringAnime = async () => {
       try {
-        const response = await getSeasonSpringAnime();
-        setSpringAnime(response);
       } catch (error) {
         console.error(error);
       }
     };
     fetchSpringAnime();
-  }, []);
-
-  useEffect(() => {
-    const fetchWinterAnime = async () => {
-      try {
-        const response = await getSeasonsWinterAnime();
-        setWinterAnime(response);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchWinterAnime();
-  }, []);
+  }, [springAnime]);
 
   return (
     <>
@@ -152,9 +123,9 @@ const Home = ({navigation}) => {
             flex: 1,
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: '#044f67',
+            backgroundColor: colors.backgroundColor,
           }}>
-          <ActivityIndicator size={'large'} color={'#f58f84'} />
+          <ActivityIndicator size={'large'} color={colors.headingColor} />
         </View>
       )}
     </>
@@ -163,7 +134,7 @@ const Home = ({navigation}) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#875f9a',
+    backgroundColor: colors.backgroundColor,
   },
   sliderContainer: {
     flex: 1,
